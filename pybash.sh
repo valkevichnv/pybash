@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DIRNAME="testcase-pybash"
-#URL="https://github.com/kontur-exploitation/testcase-pybash.git"
-URL="https://github.com/valkevichnv/testcase-pybash.git"
+URL="https://github.com/kontur-exploitation/testcase-pybash.git"
+#URL="https://github.com/valkevichnv/testcase-pybash.git"
 PORT="80"
 PROJECT="pybash"
 MAINT="unknown"
@@ -24,7 +24,7 @@ else
 	REFRESH=$(git branch -r | grep -v "/HEAD" | cut -d "/" -f2)
 fi
 
-echo "DEBUG: Branches for update: $REFRESH"
+#echo "DEBUG: Branches for update: $REFRESH"
 
 if [ -z "$REFRESH" ]
 then 
@@ -38,8 +38,8 @@ else
 	docker build ../ -t $name  \
 		--build-arg build_maint="$MAINT" \
 		--build-arg build_branch="$branch" \
-		--build-arg build_commit="$(git log | head -1 | cut -d " " -f 2 | head -c10)" #\
-#		> /dev/null
+		--build-arg build_commit="$(git log | head -1 | cut -d " " -f 2 | head -c10)" \
+		> /dev/null
 	if [ ! -z "$(docker ps | grep $name)" ]
 	then
 	    echo "INFO: Stopping old $branch"
