@@ -1,14 +1,18 @@
 FROM alpine:latest
-ARG build_logpath="js.log" 
+
+RUN apk add nodejs
+
 ARG    build_maint="DEF_MAINT"
 ARG    build_branch="DEF_BRANCH"
 ARG    build_commit="DEF_COMMIT"
-ENV logpath=$build_logpath \
-    maint=$build_maint \
-    branch=$buidl_branch \
-    build_commit=$build_commit
+
+LABEL branch=$build_branch \
+      commit=$build_commit \
+      maintaner=$build_maint
+
 WORKDIR /app
-ADD $logpath /app/js.log
 COPY testcase-pybash/ /app
-RUN apk add nodejs 
-CMD [ "node", "/app/index.js",">","js.log" ]
+
+RUN ln -sf /dev/stdout /var/log/js.log
+
+CMD [ "node", "/app/index.js" ]
