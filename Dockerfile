@@ -13,6 +13,4 @@ LABEL branch=$build_branch \
 WORKDIR /app
 COPY testcase-pybash/ /app
 
-RUN ln -sf /dev/stdout /var/log/js.log
-
 CMD [ "node", "/app/index.js" ]
