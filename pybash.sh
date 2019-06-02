@@ -2,8 +2,8 @@
 
 DIRNAME="$(pwd)/testcase-pybash"
 DOCKERPATH="$(pwd)"
-#URL="https://github.com/kontur-exploitation/testcase-pybash.git"
-URL="https://github.com/valkevichnv/testcase-pybash.git"
+URL="https://github.com/kontur-exploitation/testcase-pybash.git"
+#URL="https://github.com/valkevichnv/testcase-pybash.git"
 PORT="80"
 PROJECT="pybash"
 MAINT="unknown"
