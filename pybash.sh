@@ -6,10 +6,15 @@ URL="https://github.com/kontur-exploitation/testcase-pybash.git"
 PORT="80"
 PROJECT="pybash"
 MAINT="unknown"
+[ ! -z "$1" ] && time=$1 || time="60s"
+
 
 info () {
 	echo "INFO:" $1
 }
+
+while :
+do
 
 if [ -d "$DIRNAME" ] 
 then	
@@ -29,7 +34,8 @@ fi
 if [ -z "$REFRESH" ]
 then 
 	info "Nothing to update"
-	exit
+	sleep $time
+	continue
 else
     for branch in $REFRESH; do
 	name="$PROJECT-$branch"
@@ -55,8 +61,10 @@ else
     done
 fi
 
+sleep $time
+done
 
-
+cd --
 
 
 
